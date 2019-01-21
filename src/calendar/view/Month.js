@@ -14,6 +14,14 @@ Ext.define('Extensible.calendar.view.Month', {
         'Extensible.calendar.util.WeekEventRenderer',
         'Extensible.calendar.view.MonthDayDetail'
     ],
+    
+    /**
+     * @cfg {String} calendarIds
+     * The IDs of the calendars which should be fetched from the server
+     * 
+     * @type {Array<string>}
+     */
+    calendarIds: undefined,
 
     /**
      * @cfg {String} moreText
@@ -598,5 +606,23 @@ Ext.define('Extensible.calendar.view.Month', {
         if(this.detailsPanel) {
             this.detailPanel.body.un('contextmenu', this.onContextMenu, this);
         }
+    },
+    
+    /**
+     * @override of function in {@link Extensible.calendar.view.AbstractCalendar AbstractCalendar} to add {@link #calendarIds}
+     * @return {Object} An object containing all params to be sent when loading the event store
+     */
+    getStoreParams: function() {
+        // This is needed if you require the default start and end dates to be included
+        var params = this.getStoreDateParams();
+
+        // Here is where you can add additional custom params, e.g.:
+        // params.now = Ext.Date.format(new Date(), this.dateParamFormat);
+        // params.foo = 'bar';
+        // params.number = 123;
+
+        params.calendarIds = this.calendarIds;
+
+        return params;
     }
 });
