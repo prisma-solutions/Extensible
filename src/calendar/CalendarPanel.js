@@ -627,6 +627,7 @@ Ext.define('Extensible.calendar.CalendarPanel', {
             
             month = Ext.apply(Ext.apply(month, this.viewConfig), this.monthViewCfg);
             month.id = this.id+'-month';
+            month.startDate = this.startDate;
             this.initEventRelay(month);
             this.add(month);
         }
