@@ -24,6 +24,12 @@ Ext.define('Extensible.calendar.view.Month', {
     calendarIds: undefined,
 
     /**
+     * @cfg {Boolean} showOverlappingEvents
+     * True to display Events which are happening in the previous month
+     */
+    showOverlappingEvents: true,
+
+    /**
      * @cfg {String} moreText
      * **Deprecated.** Please override {@link #getMoreText} instead.
      *
@@ -341,9 +347,30 @@ Ext.define('Extensible.calendar.view.Month', {
     },
 
     renderItems: function() {
+
+        var viewStart = this.viewStart;
+        var viewEnd = this.viewEnd;
+        var currentDate;
+
+        if(!this.showOverlappingEvents){
+            var startDate = this.startDate;
+
+            currentDate = this.viewStart;
+
+            if (viewStart.getMonth() < startDate.getMonth()) {
+                viewStart = new Date(viewStart.getFullYear(), viewStart.getMonth() + 1, 1);
+            }
+
+            if (viewEnd.getMonth() > startDate.getMonth()) {
+                viewEnd = new Date(viewEnd.getFullYear(), viewEnd.getMonth(), 0);
+            }
+        }
+
         Extensible.calendar.util.WeekEventRenderer.render({
             eventGrid: this.allDayOnly ? this.allDayGrid : this.eventGrid,
-            viewStart: this.viewStart,
+            viewStart: viewStart,
+            viewEnd: viewEnd,
+            currentDate: currentDate,
             tpl: this.getEventTemplate(),
             maxEventsPerDay: this.maxEventsPerDay,
             viewId: this.id,

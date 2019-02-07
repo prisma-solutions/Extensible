@@ -84,7 +84,7 @@ Ext.define('Extensible.calendar.util.WeekEventRenderer', {
                 spaceChar = '&#160;',
                 weekIndex = 0,
                 eventGrid = config.eventGrid,
-                currentDate = Extensible.Date.add(Ext.Date.clearTime(config.viewStart, true), {hours: 12}),
+                currentDate = config.currentDate || Extensible.Date.add(Ext.Date.clearTime(config.viewStart, true), {hours: 12}),
                 currentDateString = '',
                 eventTpl = config.tpl,
                 maxEventsPerDay = config.maxEventsPerDay !== undefined ? config.maxEventsPerDay : 999,
@@ -111,7 +111,7 @@ Ext.define('Extensible.calendar.util.WeekEventRenderer', {
                     currentDateString = Ext.Date.format(currentDate, 'Ymd');
 
                     // Make sure there is actually a day to process events for first
-                    if (weekGrid && weekGrid[dayIndex]) {
+                    if (weekGrid && weekGrid[dayIndex] && currentDate >= config.viewStart && currentDate <= config.viewEnd) {
                         eventIndex = 0;
                         skippedEventCount = 0;
                         dayGrid = weekGrid[dayIndex];
