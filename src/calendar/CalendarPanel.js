@@ -239,6 +239,7 @@ Ext.define('Extensible.calendar.CalendarPanel', {
         this.tbar = {
             cls: 'ext-cal-toolbar',
             border: true,
+            enableOverflow: true,
             items: []
         };
         
