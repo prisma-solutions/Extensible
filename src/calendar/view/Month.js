@@ -429,7 +429,7 @@ Ext.define('Extensible.calendar.view.Month', {
     getMaxEventsPerDay: function() {
         var dayHeight = this.getDaySize(true).height,
             eventHeight = this.getEventHeight(),
-            max = Math.max(Math.floor((dayHeight - eventHeight) / eventHeight), 0);
+            max = Math.max(Math.floor(dayHeight / eventHeight), 0);
 
         return max;
     },
