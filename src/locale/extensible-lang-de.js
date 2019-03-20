@@ -26,9 +26,9 @@ Ext.onReady(function() {
 
     if (exists('Extensible.calendar.view.Month')) {
         Ext.apply(Extensible.calendar.view.Month.prototype, {
-            moreText: '+{0} weitere...',
+            moreText: '+{0} ...',
             getMoreText: function(numEvents) {
-                return '+{0} weitere...';
+                return '+{0} ...';
             },
             detailsTitleDateFormat: 'j. F'
         });
