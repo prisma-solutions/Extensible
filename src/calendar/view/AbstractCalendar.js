@@ -54,6 +54,14 @@ Ext.define('Extensible.calendar.view.AbstractCalendar', {
     },
 
     /**
+     * @cfg {String} calendarIds
+     * The IDs of the calendars which should be fetched from the server
+     * 
+     * @type {Array<string>}
+     */
+    calendarIds: undefined,
+
+    /**
      * @cfg {Boolean} readOnly
      * True to prevent clicks on events or the view from providing CRUD capabilities, false to enable CRUD (the default).
      */
@@ -622,6 +630,9 @@ Ext.define('Extensible.calendar.view.AbstractCalendar', {
         // params.now = Ext.Date.format(new Date(), this.dateParamFormat);
         // params.foo = 'bar';
         // params.number = 123;
+
+        // add calendarIds for the server to know which to send
+        params.calendarIds = this.calendarIds;
 
         return params;
     },
