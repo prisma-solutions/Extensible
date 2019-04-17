@@ -730,3 +730,24 @@
 .x-cal-32-ad .ext-cal-evm {
     border-color: #7bc3b5;
 }
+
+/* ===== x-cal-33 ===== */
+.x-cal-33,
+.x-cal-33-x .ext-cal-evb,
+.ext-ie .x-cal-33-ad,
+.ext-opera .x-cal-33-ad {
+    color: #a6a6a6;
+}
+.ext-cal-day-col .x-cal-33,
+.ext-dd-drag-proxy .x-cal-33,
+.x-cal-33-ad,
+.x-cal-33-ad .ext-cal-evm,
+.x-cal-33 .ext-cal-picker-icon,
+.x-cal-33-x dl,
+.x-calendar-palette .x-cal-33 span {
+    background-color: #a6a6a6;
+}
+.x-cal-33-ad,
+.x-cal-33-ad .ext-cal-evm {
+    border-color: #a6a6a6;
+}
