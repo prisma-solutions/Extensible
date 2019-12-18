@@ -914,8 +914,9 @@ Ext.define('Extensible.calendar.CalendarPanel', {
     },
 
     onJumpClick: function() {
-        var dt = Ext.getCmp(this.id+'-tb-jump-dt').getValue();
-        if(dt !== '') {
+        var cmp = Ext.getCmp(this.id+'-tb-jump-dt');
+        var dt = cmp.getValue();
+        if(dt !== '' && cmp.isValid()) {
             this.startDate = this.layout.activeItem.moveTo(dt, true);
             this.updateNavState();
             // TODO: check that view actually changed:
